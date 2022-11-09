@@ -64,6 +64,13 @@
             this.bindingNavigatorDeleteItem = new System.Windows.Forms.ToolStripButton();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.databaseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.criminalsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.citizensToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.casesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.viewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.casesOfCriminalsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.policePlatformDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -88,6 +95,8 @@
             // dataGridView1
             // 
             this.dataGridView1.AutoGenerateColumns = false;
+            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.dataGridView1.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.criminalidDataGridViewTextBoxColumn,
@@ -139,71 +148,82 @@
             this.criminalidDataGridViewTextBoxColumn.DataPropertyName = "Criminal_id";
             this.criminalidDataGridViewTextBoxColumn.HeaderText = "Criminal_id";
             this.criminalidDataGridViewTextBoxColumn.Name = "criminalidDataGridViewTextBoxColumn";
+            this.criminalidDataGridViewTextBoxColumn.Width = 82;
             // 
             // lastnameDataGridViewTextBoxColumn
             // 
             this.lastnameDataGridViewTextBoxColumn.DataPropertyName = "Last_name";
             this.lastnameDataGridViewTextBoxColumn.HeaderText = "Last_name";
             this.lastnameDataGridViewTextBoxColumn.Name = "lastnameDataGridViewTextBoxColumn";
+            this.lastnameDataGridViewTextBoxColumn.Width = 84;
             // 
             // firstnameDataGridViewTextBoxColumn
             // 
             this.firstnameDataGridViewTextBoxColumn.DataPropertyName = "First_name";
             this.firstnameDataGridViewTextBoxColumn.HeaderText = "First_name";
             this.firstnameDataGridViewTextBoxColumn.Name = "firstnameDataGridViewTextBoxColumn";
+            this.firstnameDataGridViewTextBoxColumn.Width = 83;
             // 
             // surnameDataGridViewTextBoxColumn
             // 
             this.surnameDataGridViewTextBoxColumn.DataPropertyName = "Surname";
             this.surnameDataGridViewTextBoxColumn.HeaderText = "Surname";
             this.surnameDataGridViewTextBoxColumn.Name = "surnameDataGridViewTextBoxColumn";
+            this.surnameDataGridViewTextBoxColumn.Width = 74;
             // 
             // registrationDataGridViewTextBoxColumn
             // 
             this.registrationDataGridViewTextBoxColumn.DataPropertyName = "Registration";
             this.registrationDataGridViewTextBoxColumn.HeaderText = "Registration";
             this.registrationDataGridViewTextBoxColumn.Name = "registrationDataGridViewTextBoxColumn";
+            this.registrationDataGridViewTextBoxColumn.Width = 88;
             // 
             // birthdateDataGridViewTextBoxColumn
             // 
             this.birthdateDataGridViewTextBoxColumn.DataPropertyName = "Birth_date";
             this.birthdateDataGridViewTextBoxColumn.HeaderText = "Birth_date";
             this.birthdateDataGridViewTextBoxColumn.Name = "birthdateDataGridViewTextBoxColumn";
+            this.birthdateDataGridViewTextBoxColumn.Width = 80;
             // 
             // passportnumberDataGridViewTextBoxColumn
             // 
             this.passportnumberDataGridViewTextBoxColumn.DataPropertyName = "Passport_number";
             this.passportnumberDataGridViewTextBoxColumn.HeaderText = "Passport_number";
             this.passportnumberDataGridViewTextBoxColumn.Name = "passportnumberDataGridViewTextBoxColumn";
+            this.passportnumberDataGridViewTextBoxColumn.Width = 114;
             // 
             // numberofcrimesDataGridViewTextBoxColumn
             // 
             this.numberofcrimesDataGridViewTextBoxColumn.DataPropertyName = "Number_of_crimes";
             this.numberofcrimesDataGridViewTextBoxColumn.HeaderText = "Number_of_crimes";
             this.numberofcrimesDataGridViewTextBoxColumn.Name = "numberofcrimesDataGridViewTextBoxColumn";
+            this.numberofcrimesDataGridViewTextBoxColumn.Width = 120;
             // 
             // phonenumberDataGridViewTextBoxColumn
             // 
             this.phonenumberDataGridViewTextBoxColumn.DataPropertyName = "Phone_number";
             this.phonenumberDataGridViewTextBoxColumn.HeaderText = "Phone_number";
             this.phonenumberDataGridViewTextBoxColumn.Name = "phonenumberDataGridViewTextBoxColumn";
+            this.phonenumberDataGridViewTextBoxColumn.Width = 104;
             // 
             // emailDataGridViewTextBoxColumn
             // 
             this.emailDataGridViewTextBoxColumn.DataPropertyName = "Email";
             this.emailDataGridViewTextBoxColumn.HeaderText = "Email";
             this.emailDataGridViewTextBoxColumn.Name = "emailDataGridViewTextBoxColumn";
+            this.emailDataGridViewTextBoxColumn.Width = 57;
             // 
             // insearchDataGridViewCheckBoxColumn
             // 
             this.insearchDataGridViewCheckBoxColumn.DataPropertyName = "In_search";
             this.insearchDataGridViewCheckBoxColumn.HeaderText = "In_search";
             this.insearchDataGridViewCheckBoxColumn.Name = "insearchDataGridViewCheckBoxColumn";
+            this.insearchDataGridViewCheckBoxColumn.Width = 60;
             // 
             // bindingNavigator1
             // 
             this.bindingNavigator1.AddNewItem = this.bindingNavigatorAddNewItem;
-            this.bindingNavigator1.BindingSource = this.bindingSource1;
+            this.bindingNavigator1.BindingSource = this.criminalsBindingSource;
             this.bindingNavigator1.CountItem = this.bindingNavigatorCountItem;
             this.bindingNavigator1.DeleteItem = this.bindingNavigatorDeleteItem;
             this.bindingNavigator1.Dock = System.Windows.Forms.DockStyle.None;
@@ -319,6 +339,8 @@
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.databaseToolStripMenuItem,
+            this.viewToolStripMenuItem,
             this.exitToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
@@ -333,17 +355,75 @@
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
+            // databaseToolStripMenuItem
+            // 
+            this.databaseToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.criminalsToolStripMenuItem,
+            this.citizensToolStripMenuItem,
+            this.casesToolStripMenuItem});
+            this.databaseToolStripMenuItem.Name = "databaseToolStripMenuItem";
+            this.databaseToolStripMenuItem.Size = new System.Drawing.Size(67, 20);
+            this.databaseToolStripMenuItem.Text = "Database";
+            // 
+            // criminalsToolStripMenuItem
+            // 
+            this.criminalsToolStripMenuItem.Name = "criminalsToolStripMenuItem";
+            this.criminalsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.criminalsToolStripMenuItem.Text = "Criminals";
+            this.criminalsToolStripMenuItem.Click += new System.EventHandler(this.criminalsToolStripMenuItem_Click);
+            // 
+            // citizensToolStripMenuItem
+            // 
+            this.citizensToolStripMenuItem.Name = "citizensToolStripMenuItem";
+            this.citizensToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.citizensToolStripMenuItem.Text = "Citizens";
+            this.citizensToolStripMenuItem.Click += new System.EventHandler(this.citizensToolStripMenuItem_Click);
+            // 
+            // casesToolStripMenuItem
+            // 
+            this.casesToolStripMenuItem.Name = "casesToolStripMenuItem";
+            this.casesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.casesToolStripMenuItem.Text = "Cases";
+            this.casesToolStripMenuItem.Click += new System.EventHandler(this.casesToolStripMenuItem_Click);
+            // 
+            // viewToolStripMenuItem
+            // 
+            this.viewToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.casesOfCriminalsToolStripMenuItem});
+            this.viewToolStripMenuItem.Name = "viewToolStripMenuItem";
+            this.viewToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
+            this.viewToolStripMenuItem.Text = "View";
+            // 
+            // casesOfCriminalsToolStripMenuItem
+            // 
+            this.casesOfCriminalsToolStripMenuItem.Name = "casesOfCriminalsToolStripMenuItem";
+            this.casesOfCriminalsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.casesOfCriminalsToolStripMenuItem.Text = "Cases of criminals";
+            this.casesOfCriminalsToolStripMenuItem.Click += new System.EventHandler(this.casesOfCriminalsToolStripMenuItem_Click);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label1.Location = new System.Drawing.Point(12, 30);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(80, 21);
+            this.label1.TabIndex = 3;
+            this.label1.Text = "Criminals";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1171, 602);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.bindingNavigator1);
             this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.dataGridView1);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "MainForm";
             this.Text = "Main Form";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             this.Load += new System.EventHandler(this.MainForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.policePlatformDataSet)).EndInit();
@@ -397,6 +477,13 @@
         private System.Windows.Forms.ToolStripSeparator bindingNavigatorSeparator2;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem databaseToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem criminalsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem citizensToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem casesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem viewToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem casesOfCriminalsToolStripMenuItem;
+        private System.Windows.Forms.Label label1;
     }
 }
 
