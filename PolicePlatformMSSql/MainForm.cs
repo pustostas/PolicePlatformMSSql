@@ -41,6 +41,9 @@ namespace PolicePlatformMSSql
 
         private void criminalsToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            casesTableAdapter.Update(policePlatformDataSet);
+            criminalsTableAdapter.Update(policePlatformDataSet);
+            citizensTableAdapter.Update(policePlatformDataSet);
             bindingNavigator1.BindingSource = criminalsBindingSource;
             dataGridView1.DataSource = criminalsBindingSource;
             label1.Text = "Criminals";
@@ -48,6 +51,9 @@ namespace PolicePlatformMSSql
 
         private void citizensToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            casesTableAdapter.Update(policePlatformDataSet);
+            criminalsTableAdapter.Update(policePlatformDataSet);
+            citizensTableAdapter.Update(policePlatformDataSet);
             bindingNavigator1.BindingSource = citizensBindingSource;
             dataGridView1.DataSource = citizensBindingSource;
             label1.Text = "Citizens";
@@ -55,6 +61,9 @@ namespace PolicePlatformMSSql
 
         private void casesToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            casesTableAdapter.Update(policePlatformDataSet);
+            criminalsTableAdapter.Update(policePlatformDataSet);
+            citizensTableAdapter.Update(policePlatformDataSet);
             bindingNavigator1.BindingSource = casesBindingSource;
             dataGridView1.DataSource = casesBindingSource;
             label1.Text = "Cases";
@@ -67,6 +76,12 @@ namespace PolicePlatformMSSql
             casesTableAdapter.Fill(policePlatformDataSet.Cases);
             citizensTableAdapter.Fill(policePlatformDataSet.Citizens);
             criminalsTableAdapter.Fill(policePlatformDataSet.Criminals);
+        }
+
+        private void queryToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var qe = new QueryEdit();
+            qe.Show();
         }
     }
 }
