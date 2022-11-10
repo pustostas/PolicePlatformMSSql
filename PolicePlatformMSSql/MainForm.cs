@@ -83,5 +83,41 @@ namespace PolicePlatformMSSql
             var qe = new QueryEdit();
             qe.Show();
         }
+        private bool edit = true;
+        private void addToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (!edit) return;
+            var edt = new EditForm();
+            edt.ShowDialog();
+            casesTableAdapter.Fill(policePlatformDataSet.Cases);
+            policePlatformDataSet.AcceptChanges();
+        }
+        private void updateToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (!edit) return;
+            var st = new PolicePlatformDataSet.CasesDataTable();
+            casesTableAdapter.FillBy(st,
+            Convert.ToInt32(dataGridView1.SelectedRows[0].Cells[0].Value));
+            object[] row = st.Rows[0].ItemArray;
+            var edt = new EditForm(
+            Convert.ToInt32(row[0]),
+            row[1].ToString(),
+            Convert.ToDateTime(row[2]),
+            Convert.ToInt32(row[3]),
+            Convert.ToInt32(row[4])
+            );
+            edt.ShowDialog();
+            casesTableAdapter.Fill(policePlatformDataSet.Cases);
+            policePlatformDataSet.AcceptChanges();
+        }
+        private void deleteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (!edit) return;
+            casesTableAdapter.DeleteQuery(
+            Convert.ToInt32(dataGridView1.SelectedRows[0].Cells[0].Value)
+            );
+            casesTableAdapter.Fill(policePlatformDataSet.Cases);
+            policePlatformDataSet.AcceptChanges();
+        }
     }
 }

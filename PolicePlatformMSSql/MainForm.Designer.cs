@@ -33,12 +33,6 @@
             this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.policePlatformDataSet = new PolicePlatformMSSql.PolicePlatformDataSet();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.casesBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.casesTableAdapter = new PolicePlatformMSSql.PolicePlatformDataSetTableAdapters.CasesTableAdapter();
-            this.citizensBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.citizensTableAdapter = new PolicePlatformMSSql.PolicePlatformDataSetTableAdapters.CitizensTableAdapter();
-            this.criminalsBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.criminalsTableAdapter = new PolicePlatformMSSql.PolicePlatformDataSetTableAdapters.CriminalsTableAdapter();
             this.criminalidDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lastnameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.firstnameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -50,34 +44,44 @@
             this.phonenumberDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.emailDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.insearchDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.criminalsBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.casesBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.casesTableAdapter = new PolicePlatformMSSql.PolicePlatformDataSetTableAdapters.CasesTableAdapter();
+            this.citizensBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.citizensTableAdapter = new PolicePlatformMSSql.PolicePlatformDataSetTableAdapters.CitizensTableAdapter();
+            this.criminalsTableAdapter = new PolicePlatformMSSql.PolicePlatformDataSetTableAdapters.CriminalsTableAdapter();
             this.bindingNavigator1 = new System.Windows.Forms.BindingNavigator(this.components);
+            this.bindingNavigatorAddNewItem = new System.Windows.Forms.ToolStripButton();
+            this.bindingNavigatorCountItem = new System.Windows.Forms.ToolStripLabel();
+            this.bindingNavigatorDeleteItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorMoveFirstItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorMovePreviousItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorSeparator = new System.Windows.Forms.ToolStripSeparator();
             this.bindingNavigatorPositionItem = new System.Windows.Forms.ToolStripTextBox();
-            this.bindingNavigatorCountItem = new System.Windows.Forms.ToolStripLabel();
             this.bindingNavigatorSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.bindingNavigatorMoveNextItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorMoveLastItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.bindingNavigatorAddNewItem = new System.Windows.Forms.ToolStripButton();
-            this.bindingNavigatorDeleteItem = new System.Windows.Forms.ToolStripButton();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.databaseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.criminalsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.citizensToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.casesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.viewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.casesOfCriminalsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.label1 = new System.Windows.Forms.Label();
             this.queryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.label1 = new System.Windows.Forms.Label();
+            this.editFormToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.addToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.updateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.policePlatformDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.criminalsBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.casesBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.citizensBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.criminalsBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingNavigator1)).BeginInit();
             this.bindingNavigator1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
@@ -114,35 +118,9 @@
             this.dataGridView1.DataSource = this.criminalsBindingSource;
             this.dataGridView1.Location = new System.Drawing.Point(12, 54);
             this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.Size = new System.Drawing.Size(1147, 536);
             this.dataGridView1.TabIndex = 0;
-            // 
-            // casesBindingSource
-            // 
-            this.casesBindingSource.DataMember = "Cases";
-            this.casesBindingSource.DataSource = this.bindingSource1;
-            // 
-            // casesTableAdapter
-            // 
-            this.casesTableAdapter.ClearBeforeFill = true;
-            // 
-            // citizensBindingSource
-            // 
-            this.citizensBindingSource.DataMember = "Citizens";
-            this.citizensBindingSource.DataSource = this.bindingSource1;
-            // 
-            // citizensTableAdapter
-            // 
-            this.citizensTableAdapter.ClearBeforeFill = true;
-            // 
-            // criminalsBindingSource
-            // 
-            this.criminalsBindingSource.DataMember = "Criminals";
-            this.criminalsBindingSource.DataSource = this.bindingSource1;
-            // 
-            // criminalsTableAdapter
-            // 
-            this.criminalsTableAdapter.ClearBeforeFill = true;
             // 
             // criminalidDataGridViewTextBoxColumn
             // 
@@ -221,6 +199,33 @@
             this.insearchDataGridViewCheckBoxColumn.Name = "insearchDataGridViewCheckBoxColumn";
             this.insearchDataGridViewCheckBoxColumn.Width = 60;
             // 
+            // criminalsBindingSource
+            // 
+            this.criminalsBindingSource.DataMember = "Criminals";
+            this.criminalsBindingSource.DataSource = this.bindingSource1;
+            // 
+            // casesBindingSource
+            // 
+            this.casesBindingSource.DataMember = "Cases";
+            this.casesBindingSource.DataSource = this.bindingSource1;
+            // 
+            // casesTableAdapter
+            // 
+            this.casesTableAdapter.ClearBeforeFill = true;
+            // 
+            // citizensBindingSource
+            // 
+            this.citizensBindingSource.DataMember = "Citizens";
+            this.citizensBindingSource.DataSource = this.bindingSource1;
+            // 
+            // citizensTableAdapter
+            // 
+            this.citizensTableAdapter.ClearBeforeFill = true;
+            // 
+            // criminalsTableAdapter
+            // 
+            this.criminalsTableAdapter.ClearBeforeFill = true;
+            // 
             // bindingNavigator1
             // 
             this.bindingNavigator1.AddNewItem = this.bindingNavigatorAddNewItem;
@@ -250,6 +255,31 @@
             this.bindingNavigator1.Size = new System.Drawing.Size(255, 25);
             this.bindingNavigator1.TabIndex = 1;
             this.bindingNavigator1.Text = "bindingNavigator1";
+            // 
+            // bindingNavigatorAddNewItem
+            // 
+            this.bindingNavigatorAddNewItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.bindingNavigatorAddNewItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorAddNewItem.Image")));
+            this.bindingNavigatorAddNewItem.Name = "bindingNavigatorAddNewItem";
+            this.bindingNavigatorAddNewItem.RightToLeftAutoMirrorImage = true;
+            this.bindingNavigatorAddNewItem.Size = new System.Drawing.Size(23, 22);
+            this.bindingNavigatorAddNewItem.Text = "Add new";
+            // 
+            // bindingNavigatorCountItem
+            // 
+            this.bindingNavigatorCountItem.Name = "bindingNavigatorCountItem";
+            this.bindingNavigatorCountItem.Size = new System.Drawing.Size(35, 22);
+            this.bindingNavigatorCountItem.Text = "of {0}";
+            this.bindingNavigatorCountItem.ToolTipText = "Total number of items";
+            // 
+            // bindingNavigatorDeleteItem
+            // 
+            this.bindingNavigatorDeleteItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.bindingNavigatorDeleteItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorDeleteItem.Image")));
+            this.bindingNavigatorDeleteItem.Name = "bindingNavigatorDeleteItem";
+            this.bindingNavigatorDeleteItem.RightToLeftAutoMirrorImage = true;
+            this.bindingNavigatorDeleteItem.Size = new System.Drawing.Size(23, 22);
+            this.bindingNavigatorDeleteItem.Text = "Delete";
             // 
             // bindingNavigatorMoveFirstItem
             // 
@@ -281,19 +311,12 @@
             this.bindingNavigatorPositionItem.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.bindingNavigatorPositionItem.Name = "bindingNavigatorPositionItem";
             this.bindingNavigatorPositionItem.Size = new System.Drawing.Size(50, 23);
-            this.bindingNavigatorPositionItem.Text = "1";
+            this.bindingNavigatorPositionItem.Text = "0";
             this.bindingNavigatorPositionItem.ToolTipText = "Current position";
-            // 
-            // bindingNavigatorCountItem
-            // 
-            this.bindingNavigatorCountItem.Name = "bindingNavigatorCountItem";
-            this.bindingNavigatorCountItem.Size = new System.Drawing.Size(35, 22);
-            this.bindingNavigatorCountItem.Text = "of {0}";
-            this.bindingNavigatorCountItem.ToolTipText = "Total number of items";
             // 
             // bindingNavigatorSeparator1
             // 
-            this.bindingNavigatorSeparator1.Name = "bindingNavigatorSeparator";
+            this.bindingNavigatorSeparator1.Name = "bindingNavigatorSeparator1";
             this.bindingNavigatorSeparator1.Size = new System.Drawing.Size(6, 25);
             // 
             // bindingNavigatorMoveNextItem
@@ -316,26 +339,8 @@
             // 
             // bindingNavigatorSeparator2
             // 
-            this.bindingNavigatorSeparator2.Name = "bindingNavigatorSeparator";
+            this.bindingNavigatorSeparator2.Name = "bindingNavigatorSeparator2";
             this.bindingNavigatorSeparator2.Size = new System.Drawing.Size(6, 25);
-            // 
-            // bindingNavigatorAddNewItem
-            // 
-            this.bindingNavigatorAddNewItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.bindingNavigatorAddNewItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorAddNewItem.Image")));
-            this.bindingNavigatorAddNewItem.Name = "bindingNavigatorAddNewItem";
-            this.bindingNavigatorAddNewItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorAddNewItem.Size = new System.Drawing.Size(23, 22);
-            this.bindingNavigatorAddNewItem.Text = "Add new";
-            // 
-            // bindingNavigatorDeleteItem
-            // 
-            this.bindingNavigatorDeleteItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.bindingNavigatorDeleteItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorDeleteItem.Image")));
-            this.bindingNavigatorDeleteItem.Name = "bindingNavigatorDeleteItem";
-            this.bindingNavigatorDeleteItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorDeleteItem.Size = new System.Drawing.Size(23, 22);
-            this.bindingNavigatorDeleteItem.Text = "Delete";
             // 
             // menuStrip1
             // 
@@ -348,13 +353,6 @@
             this.menuStrip1.Size = new System.Drawing.Size(1171, 24);
             this.menuStrip1.TabIndex = 2;
             this.menuStrip1.Text = "menuStrip1";
-            // 
-            // exitToolStripMenuItem
-            // 
-            this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(38, 20);
-            this.exitToolStripMenuItem.Text = "Exit";
-            this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
             // databaseToolStripMenuItem
             // 
@@ -369,21 +367,21 @@
             // criminalsToolStripMenuItem
             // 
             this.criminalsToolStripMenuItem.Name = "criminalsToolStripMenuItem";
-            this.criminalsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.criminalsToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
             this.criminalsToolStripMenuItem.Text = "Criminals";
             this.criminalsToolStripMenuItem.Click += new System.EventHandler(this.criminalsToolStripMenuItem_Click);
             // 
             // citizensToolStripMenuItem
             // 
             this.citizensToolStripMenuItem.Name = "citizensToolStripMenuItem";
-            this.citizensToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.citizensToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
             this.citizensToolStripMenuItem.Text = "Citizens";
             this.citizensToolStripMenuItem.Click += new System.EventHandler(this.citizensToolStripMenuItem_Click);
             // 
             // casesToolStripMenuItem
             // 
             this.casesToolStripMenuItem.Name = "casesToolStripMenuItem";
-            this.casesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.casesToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
             this.casesToolStripMenuItem.Text = "Cases";
             this.casesToolStripMenuItem.Click += new System.EventHandler(this.casesToolStripMenuItem_Click);
             // 
@@ -391,7 +389,8 @@
             // 
             this.viewToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.casesOfCriminalsToolStripMenuItem,
-            this.queryToolStripMenuItem});
+            this.queryToolStripMenuItem,
+            this.editFormToolStripMenuItem});
             this.viewToolStripMenuItem.Name = "viewToolStripMenuItem";
             this.viewToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
             this.viewToolStripMenuItem.Text = "View";
@@ -403,6 +402,20 @@
             this.casesOfCriminalsToolStripMenuItem.Text = "Cases of criminals";
             this.casesOfCriminalsToolStripMenuItem.Click += new System.EventHandler(this.casesOfCriminalsToolStripMenuItem_Click);
             // 
+            // queryToolStripMenuItem
+            // 
+            this.queryToolStripMenuItem.Name = "queryToolStripMenuItem";
+            this.queryToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.queryToolStripMenuItem.Text = "QueryEdit";
+            this.queryToolStripMenuItem.Click += new System.EventHandler(this.queryToolStripMenuItem_Click);
+            // 
+            // exitToolStripMenuItem
+            // 
+            this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(38, 20);
+            this.exitToolStripMenuItem.Text = "Exit";
+            this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
+            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -413,12 +426,36 @@
             this.label1.TabIndex = 3;
             this.label1.Text = "Criminals";
             // 
-            // queryToolStripMenuItem
+            // editFormToolStripMenuItem
             // 
-            this.queryToolStripMenuItem.Name = "queryToolStripMenuItem";
-            this.queryToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.queryToolStripMenuItem.Text = "QueryEdit";
-            this.queryToolStripMenuItem.Click += new System.EventHandler(this.queryToolStripMenuItem_Click);
+            this.editFormToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.addToolStripMenuItem,
+            this.deleteToolStripMenuItem,
+            this.updateToolStripMenuItem});
+            this.editFormToolStripMenuItem.Name = "editFormToolStripMenuItem";
+            this.editFormToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.editFormToolStripMenuItem.Text = "EditForm";
+            // 
+            // addToolStripMenuItem
+            // 
+            this.addToolStripMenuItem.Name = "addToolStripMenuItem";
+            this.addToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.addToolStripMenuItem.Text = "Add";
+            this.addToolStripMenuItem.Click += new System.EventHandler(this.addToolStripMenuItem_Click);
+            // 
+            // deleteToolStripMenuItem
+            // 
+            this.deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
+            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.deleteToolStripMenuItem.Text = "Delete";
+            this.deleteToolStripMenuItem.Click += new System.EventHandler(this.deleteToolStripMenuItem_Click);
+            // 
+            // updateToolStripMenuItem
+            // 
+            this.updateToolStripMenuItem.Name = "updateToolStripMenuItem";
+            this.updateToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.updateToolStripMenuItem.Text = "Update";
+            this.updateToolStripMenuItem.Click += new System.EventHandler(this.updateToolStripMenuItem_Click);
             // 
             // MainForm
             // 
@@ -437,9 +474,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.policePlatformDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.criminalsBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.casesBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.citizensBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.criminalsBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingNavigator1)).EndInit();
             this.bindingNavigator1.ResumeLayout(false);
             this.bindingNavigator1.PerformLayout();
@@ -494,6 +531,10 @@
         private System.Windows.Forms.ToolStripMenuItem casesOfCriminalsToolStripMenuItem;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ToolStripMenuItem queryToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem editFormToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem addToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem deleteToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem updateToolStripMenuItem;
     }
 }
 

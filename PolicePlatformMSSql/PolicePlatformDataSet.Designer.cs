@@ -539,7 +539,11 @@ namespace PolicePlatformMSSql {
                 base.Columns.Add(this.columnCitizen_id);
                 this.columnCriminal_id = new global::System.Data.DataColumn("Criminal_id", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnCriminal_id);
+                this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
+                                this.columnCase_id}, false));
+                this.columnCase_id.AutoIncrementSeed = 1;
                 this.columnCase_id.AllowDBNull = false;
+                this.columnCase_id.Unique = true;
                 this.columnArticle.AllowDBNull = false;
                 this.columnArticle.MaxLength = 50;
                 this.columnDate_of_receiving.AllowDBNull = false;
@@ -913,6 +917,7 @@ namespace PolicePlatformMSSql {
                 base.Columns.Add(this.columnEmail);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnCitizen_id}, true));
+                this.columnCitizen_id.AutoIncrementSeed = 1;
                 this.columnCitizen_id.AllowDBNull = false;
                 this.columnCitizen_id.Unique = true;
                 this.columnLast_name.AllowDBNull = false;
@@ -1326,6 +1331,7 @@ namespace PolicePlatformMSSql {
                 base.Columns.Add(this.columnIn_search);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnCriminal_id}, true));
+                this.columnCriminal_id.AutoIncrementSeed = 1;
                 this.columnCriminal_id.AllowDBNull = false;
                 this.columnCriminal_id.Unique = true;
                 this.columnLast_name.AllowDBNull = false;
@@ -2091,12 +2097,43 @@ namespace PolicePlatformMSSql.PolicePlatformDataSetTableAdapters {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitCommandCollection() {
-            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
+            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[5];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = "SELECT Case_id, Article, Date_of_receiving, Citizen_id, Criminal_id FROM dbo.Case" +
                 "s";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[1] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[1].Connection = this.Connection;
+            this._commandCollection[1].CommandText = "DELETE FROM Cases WHERE [Case_id] = @Case_id";
+            this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Case_id", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "Case_id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._commandCollection[2] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[2].Connection = this.Connection;
+            this._commandCollection[2].CommandText = "SELECT Case_id, Article, Date_of_receiving, Citizen_id, Criminal_id FROM Cases WH" +
+                "ERE ([Case_id] = @Case_id);";
+            this._commandCollection[2].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Case_id", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "Case_id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[3] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[3].Connection = this.Connection;
+            this._commandCollection[3].CommandText = "INSERT INTO [dbo].[Cases] ( [Article], [Date_of_receiving], [Citizen_id], [Crimin" +
+                "al_id]) VALUES ( @Article, @Date_of_receiving, @Citizen_id, @Criminal_id)";
+            this._commandCollection[3].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[3].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Article", global::System.Data.SqlDbType.VarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "Article", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[3].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Date_of_receiving", global::System.Data.SqlDbType.Date, 3, global::System.Data.ParameterDirection.Input, 0, 0, "Date_of_receiving", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[3].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Citizen_id", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "Citizen_id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[3].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Criminal_id", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "Criminal_id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[4] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[4].Connection = this.Connection;
+            this._commandCollection[4].CommandText = "UPDATE Cases SET [Article] = @Article, [Date_of_receiving] = CAST(@Date_of_receiv" +
+                "ing as date), [Citizen_id] = @Citizen_id, [Criminal_id] = @Criminal_id WHERE (Ca" +
+                "se_id = @Case_id)";
+            this._commandCollection[4].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[4].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Article", global::System.Data.SqlDbType.VarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "Article", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[4].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Date_of_receiving", global::System.Data.SqlDbType.Date, 3, global::System.Data.ParameterDirection.Input, 0, 0, "Date_of_receiving", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[4].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Citizen_id", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "Citizen_id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[4].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Criminal_id", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "Criminal_id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[4].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Case_id", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "Case_id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2118,6 +2155,32 @@ namespace PolicePlatformMSSql.PolicePlatformDataSetTableAdapters {
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
         public virtual PolicePlatformDataSet.CasesDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
+            PolicePlatformDataSet.CasesDataTable dataTable = new PolicePlatformDataSet.CasesDataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
+        public virtual int FillBy(PolicePlatformDataSet.CasesDataTable dataTable, int Case_id) {
+            this.Adapter.SelectCommand = this.CommandCollection[2];
+            this.Adapter.SelectCommand.Parameters[0].Value = ((int)(Case_id));
+            if ((this.ClearBeforeFill == true)) {
+                dataTable.Clear();
+            }
+            int returnValue = this.Adapter.Fill(dataTable);
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
+        public virtual PolicePlatformDataSet.CasesDataTable GetDataBy2(int Case_id) {
+            this.Adapter.SelectCommand = this.CommandCollection[2];
+            this.Adapter.SelectCommand.Parameters[0].Value = ((int)(Case_id));
             PolicePlatformDataSet.CasesDataTable dataTable = new PolicePlatformDataSet.CasesDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
@@ -2181,6 +2244,105 @@ namespace PolicePlatformMSSql.PolicePlatformDataSetTableAdapters {
                     this.Adapter.InsertCommand.Connection.Close();
                 }
             }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, false)]
+        public virtual int DeleteQuery(int Case_id) {
+            global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[1];
+            command.Parameters[0].Value = ((int)(Case_id));
+            global::System.Data.ConnectionState previousConnectionState = command.Connection.State;
+            if (((command.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                command.Connection.Open();
+            }
+            int returnValue;
+            try {
+                returnValue = command.ExecuteNonQuery();
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    command.Connection.Close();
+                }
+            }
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, false)]
+        public virtual int InsertQuery(string Article, string Date_of_receiving, int Citizen_id, int Criminal_id) {
+            global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[3];
+            if ((Article == null)) {
+                throw new global::System.ArgumentNullException("Article");
+            }
+            else {
+                command.Parameters[0].Value = ((string)(Article));
+            }
+            if ((Date_of_receiving == null)) {
+                throw new global::System.ArgumentNullException("Date_of_receiving");
+            }
+            else {
+                command.Parameters[1].Value = ((string)(Date_of_receiving));
+            }
+            command.Parameters[2].Value = ((int)(Citizen_id));
+            command.Parameters[3].Value = ((int)(Criminal_id));
+            global::System.Data.ConnectionState previousConnectionState = command.Connection.State;
+            if (((command.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                command.Connection.Open();
+            }
+            int returnValue;
+            try {
+                returnValue = command.ExecuteNonQuery();
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    command.Connection.Close();
+                }
+            }
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, false)]
+        public virtual int UpdateQuery(string Article, string Date_of_receiving, int Citizen_id, int Criminal_id, int Case_id) {
+            global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[4];
+            if ((Article == null)) {
+                throw new global::System.ArgumentNullException("Article");
+            }
+            else {
+                command.Parameters[0].Value = ((string)(Article));
+            }
+            if ((Date_of_receiving == null)) {
+                throw new global::System.ArgumentNullException("Date_of_receiving");
+            }
+            else {
+                command.Parameters[1].Value = ((string)(Date_of_receiving));
+            }
+            command.Parameters[2].Value = ((int)(Citizen_id));
+            command.Parameters[3].Value = ((int)(Criminal_id));
+            command.Parameters[4].Value = ((int)(Case_id));
+            global::System.Data.ConnectionState previousConnectionState = command.Connection.State;
+            if (((command.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                command.Connection.Open();
+            }
+            int returnValue;
+            try {
+                returnValue = command.ExecuteNonQuery();
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    command.Connection.Close();
+                }
+            }
+            return returnValue;
         }
     }
     
@@ -2442,8 +2604,13 @@ SELECT Citizen_id, Last_name, First_name, Surname, Registration, Birth_date, Pas
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public virtual int Delete(int Original_Citizen_id, string Original_Last_name, string Original_First_name, string Original_Surname, string Original_Registration, System.DateTime Original_Birth_date, string Original_Passport_number, string Original_Phone_number, string Original_Email) {
-            this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Original_Citizen_id));
+        public virtual int Delete(global::System.Nullable<int> Original_Citizen_id, string Original_Last_name, string Original_First_name, string Original_Surname, string Original_Registration, System.DateTime Original_Birth_date, string Original_Passport_number, string Original_Phone_number, string Original_Email) {
+            if ((Original_Citizen_id.HasValue == true)) {
+                this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Original_Citizen_id.Value));
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[0].Value = global::System.DBNull.Value;
+            }
             if ((Original_Last_name == null)) {
                 throw new global::System.ArgumentNullException("Original_Last_name");
             }
@@ -2507,8 +2674,13 @@ SELECT Citizen_id, Last_name, First_name, Surname, Registration, Birth_date, Pas
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(int Citizen_id, string Last_name, string First_name, string Surname, string Registration, System.DateTime Birth_date, string Passport_number, string Phone_number, string Email) {
-            this.Adapter.InsertCommand.Parameters[0].Value = ((int)(Citizen_id));
+        public virtual int Insert(global::System.Nullable<int> Citizen_id, string Last_name, string First_name, string Surname, string Registration, System.DateTime Birth_date, string Passport_number, string Phone_number, string Email) {
+            if ((Citizen_id.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[0].Value = ((int)(Citizen_id.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[0].Value = global::System.DBNull.Value;
+            }
             if ((Last_name == null)) {
                 throw new global::System.ArgumentNullException("Last_name");
             }
@@ -2573,7 +2745,7 @@ SELECT Citizen_id, Last_name, First_name, Surname, Registration, Birth_date, Pas
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
         public virtual int Update(
-                    int Citizen_id, 
+                    global::System.Nullable<int> Citizen_id, 
                     string Last_name, 
                     string First_name, 
                     string Surname, 
@@ -2582,7 +2754,7 @@ SELECT Citizen_id, Last_name, First_name, Surname, Registration, Birth_date, Pas
                     string Passport_number, 
                     string Phone_number, 
                     string Email, 
-                    int Original_Citizen_id, 
+                    global::System.Nullable<int> Original_Citizen_id, 
                     string Original_Last_name, 
                     string Original_First_name, 
                     string Original_Surname, 
@@ -2591,7 +2763,12 @@ SELECT Citizen_id, Last_name, First_name, Surname, Registration, Birth_date, Pas
                     string Original_Passport_number, 
                     string Original_Phone_number, 
                     string Original_Email) {
-            this.Adapter.UpdateCommand.Parameters[0].Value = ((int)(Citizen_id));
+            if ((Citizen_id.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[0].Value = ((int)(Citizen_id.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[0].Value = global::System.DBNull.Value;
+            }
             if ((Last_name == null)) {
                 throw new global::System.ArgumentNullException("Last_name");
             }
@@ -2635,7 +2812,12 @@ SELECT Citizen_id, Last_name, First_name, Surname, Registration, Birth_date, Pas
             else {
                 this.Adapter.UpdateCommand.Parameters[8].Value = ((string)(Email));
             }
-            this.Adapter.UpdateCommand.Parameters[9].Value = ((int)(Original_Citizen_id));
+            if ((Original_Citizen_id.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[9].Value = ((int)(Original_Citizen_id.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[9].Value = global::System.DBNull.Value;
+            }
             if ((Original_Last_name == null)) {
                 throw new global::System.ArgumentNullException("Original_Last_name");
             }
@@ -2708,7 +2890,7 @@ SELECT Citizen_id, Last_name, First_name, Surname, Registration, Birth_date, Pas
                     string Passport_number, 
                     string Phone_number, 
                     string Email, 
-                    int Original_Citizen_id, 
+                    global::System.Nullable<int> Original_Citizen_id, 
                     string Original_Last_name, 
                     string Original_First_name, 
                     string Original_Surname, 
@@ -2990,8 +3172,13 @@ SELECT Criminal_id, Last_name, First_name, Surname, Registration, Birth_date, Pa
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public virtual int Delete(int Original_Criminal_id, string Original_Last_name, string Original_First_name, string Original_Surname, string Original_Registration, System.DateTime Original_Birth_date, string Original_Passport_number, int Original_Number_of_crimes, string Original_Phone_number, string Original_Email, bool Original_In_search) {
-            this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Original_Criminal_id));
+        public virtual int Delete(global::System.Nullable<int> Original_Criminal_id, string Original_Last_name, string Original_First_name, string Original_Surname, string Original_Registration, System.DateTime Original_Birth_date, string Original_Passport_number, int Original_Number_of_crimes, string Original_Phone_number, string Original_Email, bool Original_In_search) {
+            if ((Original_Criminal_id.HasValue == true)) {
+                this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Original_Criminal_id.Value));
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[0].Value = global::System.DBNull.Value;
+            }
             if ((Original_Last_name == null)) {
                 throw new global::System.ArgumentNullException("Original_Last_name");
             }
@@ -3057,8 +3244,13 @@ SELECT Criminal_id, Last_name, First_name, Surname, Registration, Birth_date, Pa
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(int Criminal_id, string Last_name, string First_name, string Surname, string Registration, System.DateTime Birth_date, string Passport_number, int Number_of_crimes, string Phone_number, string Email, bool In_search) {
-            this.Adapter.InsertCommand.Parameters[0].Value = ((int)(Criminal_id));
+        public virtual int Insert(global::System.Nullable<int> Criminal_id, string Last_name, string First_name, string Surname, string Registration, System.DateTime Birth_date, string Passport_number, int Number_of_crimes, string Phone_number, string Email, bool In_search) {
+            if ((Criminal_id.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[0].Value = ((int)(Criminal_id.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[0].Value = global::System.DBNull.Value;
+            }
             if ((Last_name == null)) {
                 throw new global::System.ArgumentNullException("Last_name");
             }
@@ -3125,7 +3317,7 @@ SELECT Criminal_id, Last_name, First_name, Surname, Registration, Birth_date, Pa
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
         public virtual int Update(
-                    int Criminal_id, 
+                    global::System.Nullable<int> Criminal_id, 
                     string Last_name, 
                     string First_name, 
                     string Surname, 
@@ -3136,7 +3328,7 @@ SELECT Criminal_id, Last_name, First_name, Surname, Registration, Birth_date, Pa
                     string Phone_number, 
                     string Email, 
                     bool In_search, 
-                    int Original_Criminal_id, 
+                    global::System.Nullable<int> Original_Criminal_id, 
                     string Original_Last_name, 
                     string Original_First_name, 
                     string Original_Surname, 
@@ -3147,7 +3339,12 @@ SELECT Criminal_id, Last_name, First_name, Surname, Registration, Birth_date, Pa
                     string Original_Phone_number, 
                     string Original_Email, 
                     bool Original_In_search) {
-            this.Adapter.UpdateCommand.Parameters[0].Value = ((int)(Criminal_id));
+            if ((Criminal_id.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[0].Value = ((int)(Criminal_id.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[0].Value = global::System.DBNull.Value;
+            }
             if ((Last_name == null)) {
                 throw new global::System.ArgumentNullException("Last_name");
             }
@@ -3193,7 +3390,12 @@ SELECT Criminal_id, Last_name, First_name, Surname, Registration, Birth_date, Pa
                 this.Adapter.UpdateCommand.Parameters[9].Value = ((string)(Email));
             }
             this.Adapter.UpdateCommand.Parameters[10].Value = ((bool)(In_search));
-            this.Adapter.UpdateCommand.Parameters[11].Value = ((int)(Original_Criminal_id));
+            if ((Original_Criminal_id.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[11].Value = ((int)(Original_Criminal_id.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[11].Value = global::System.DBNull.Value;
+            }
             if ((Original_Last_name == null)) {
                 throw new global::System.ArgumentNullException("Original_Last_name");
             }
@@ -3270,7 +3472,7 @@ SELECT Criminal_id, Last_name, First_name, Surname, Registration, Birth_date, Pa
                     string Phone_number, 
                     string Email, 
                     bool In_search, 
-                    int Original_Criminal_id, 
+                    global::System.Nullable<int> Original_Criminal_id, 
                     string Original_Last_name, 
                     string Original_First_name, 
                     string Original_Surname, 
