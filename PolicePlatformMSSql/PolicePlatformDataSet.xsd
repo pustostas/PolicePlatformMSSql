@@ -274,7 +274,7 @@ SELECT Criminal_id, Last_name, First_name, Surname, Registration, Birth_date, Pa
         <xs:element name="Cases" msprop:Generator_RowClassName="CasesRow" msprop:Generator_RowEvHandlerName="CasesRowChangeEventHandler" msprop:Generator_RowDeletedName="CasesRowDeleted" msprop:Generator_RowDeletingName="CasesRowDeleting" msprop:Generator_RowEvArgName="CasesRowChangeEvent" msprop:Generator_TablePropName="Cases" msprop:Generator_RowChangedName="CasesRowChanged" msprop:Generator_UserTableName="Cases" msprop:Generator_RowChangingName="CasesRowChanging" msprop:Generator_TableClassName="CasesDataTable" msprop:Generator_TableVarName="tableCases">
           <xs:complexType>
             <xs:sequence>
-              <xs:element name="Case_id" msdata:AutoIncrementSeed="1" msprop:Generator_UserColumnName="Case_id" msprop:Generator_ColumnPropNameInTable="Case_idColumn" msprop:Generator_ColumnPropNameInRow="Case_id" msprop:Generator_ColumnVarNameInTable="columnCase_id" type="xs:int" />
+              <xs:element name="Case_id" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_UserColumnName="Case_id" msprop:Generator_ColumnPropNameInTable="Case_idColumn" msprop:Generator_ColumnPropNameInRow="Case_id" msprop:Generator_ColumnVarNameInTable="columnCase_id" type="xs:int" />
               <xs:element name="Article" msprop:Generator_UserColumnName="Article" msprop:Generator_ColumnPropNameInTable="ArticleColumn" msprop:Generator_ColumnPropNameInRow="Article" msprop:Generator_ColumnVarNameInTable="columnArticle">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">

@@ -541,7 +541,8 @@ namespace PolicePlatformMSSql {
                 base.Columns.Add(this.columnCriminal_id);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnCase_id}, false));
-                this.columnCase_id.AutoIncrementSeed = 1;
+                this.columnCase_id.AutoIncrementSeed = -1;
+                this.columnCase_id.AutoIncrementStep = -1;
                 this.columnCase_id.AllowDBNull = false;
                 this.columnCase_id.Unique = true;
                 this.columnArticle.AllowDBNull = false;

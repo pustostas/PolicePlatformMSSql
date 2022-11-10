@@ -25,10 +25,10 @@ namespace PolicePlatformMSSql
         /// <summary>
         /// конструктор формы, для модификации уже существующей записи
         /// </summary>
-        /// <param name="Article">ФИО</param>
-        /// <param name="Date_of_receiving">Дата заселения</param>
-        /// <param name="Citizen_id">Номер комнаты</param>
-        /// <param name="Criminal_id">Паспорт</param>
+        /// <param name="Article">Стаття</param>
+        /// <param name="Date_of_receiving">Дата прийняття</param>
+        /// <param name="Citizen_id">Громадянин</param>
+        /// <param name="Criminal_id">Злочинець</param>
         /// <param name="Case_id">ID студента</param>
         public EditForm(int Case_id, String Article, DateTime Date_of_receiving, int Citizen_id, int Criminal_id)
         : this()
